@@ -13,3 +13,4 @@ def set_up(playwright: Playwright) -> None:
 
     yield page
     page.close()
+

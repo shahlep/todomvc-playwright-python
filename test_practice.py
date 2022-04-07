@@ -14,3 +14,12 @@ def test_url_page_is_working(set_up):
     expect(page.locator('.todo-list li')).to_have_count(5)
 
 
+"""
+Write a test that asserts that the input field
+is focused automatically when the app is first loaded.
+"""
+
+
+def test_focus_on_todo_input_field(set_up):
+    page = set_up
+    assert page.locator('.new-todo').is_editable()
