@@ -3,7 +3,7 @@ import pytest
 
 
 def test_url_page_is_working(playwright: Playwright) -> None:
-    browser = playwright.chromium.launch(headless=False)
+    browser = playwright.chromium.launch(headless=True)
     context = browser.new_context()
     # Open new page
     page = context.new_page()
