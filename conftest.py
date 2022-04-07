@@ -1,0 +1,15 @@
+import pytest
+from playwright.sync_api import Playwright
+
+
+@pytest.fixture
+def set_up(playwright: Playwright) -> None:
+    browser = playwright.chromium.launch(headless=False)
+    context = browser.new_context()
+    # Open new page
+    page = context.new_page()
+    # Go to https://demo.playwright.dev/todomvc/#/
+    page.goto("https://demo.playwright.dev/todomvc/#/")
+
+    yield page
+    page.close()
