@@ -1,5 +1,5 @@
 import pytest
-from playwright.sync_api import Playwright
+from playwright.sync_api import Playwright, expect
 
 
 @pytest.fixture
@@ -13,4 +13,3 @@ def set_up(playwright: Playwright) -> None:
 
     yield page
     page.close()
-
