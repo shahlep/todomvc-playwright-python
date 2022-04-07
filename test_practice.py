@@ -23,3 +23,17 @@ is focused automatically when the app is first loaded.
 def test_focus_on_todo_input_field(set_up):
     page = set_up
     assert page.locator('.new-todo').is_editable()
+
+
+"""
+should clear text input field when an item is added
+"""
+
+
+def test_clear_input_field_after_add(set_up):
+    page = set_up
+    page.locator('.new-todo').click()
+    page.locator('.new-todo').fill('item')
+    page.locator('.new-todo').press('Enter')
+
+    expect(page.locator('.new-todo')).to_be_empty()
