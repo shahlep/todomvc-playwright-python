@@ -93,3 +93,41 @@ def test_can_edit_a_todo(set_up):
     expect(page.locator('.todo-list li')).to_have_text('edited item')
 
 
+"""
+ Write a test that ensures that the app counts the correct number of todos
+ left to be completed, i.e "3 items left" in the bottom left corner.
+"""
+
+
+def test_count_number_of_todo_left_to_complete(set_up):
+    page = set_up
+
+    items = ['one', 'two', 'three', 'four', 'five']
+    for item in items:
+        page.click('.new-todo')
+        page.fill('.new-todo', item)
+        page.locator('.new-todo').press('Enter')
+
+    expect(page.locator('.todo-count')).to_have_text('5 items left')
+
+
+"""
+Write a test that ensures that the todos are persisted in the app
+after the browser refreshes the page
+"""
+
+
+def test_page_reload_and_persist(set_up):
+    page = set_up
+
+    items = ['one', 'two', 'three', 'four', 'five']
+    for item in items:
+        page.click('.new-todo')
+        page.fill('.new-todo', item)
+        page.locator('.new-todo').press('Enter')
+
+    expect(page.locator('.todo-list li')).to_have_count(5)
+
+    page.reload()
+
+    expect(page.locator('.todo-list li')).to_have_count(5)
