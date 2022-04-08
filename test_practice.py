@@ -131,3 +131,21 @@ def test_page_reload_and_persist(set_up):
     page.reload()
 
     expect(page.locator('.todo-list li')).to_have_count(5)
+
+
+"""
+Write a test that ensures that only the completed todos are
+displayed when the "Completed" button is clicked at the bottom
+"""
+
+
+def test_display_only_completed_todos(set_up):
+    page = set_up
+
+    page.click('.new-todo')
+    page.fill('.new-todo', 'item')
+    page.locator('.new-todo').press('Enter')
+    page.click('.toggle')
+
+    page.click('.selected')
+    expect(page.locator('.todo-list li')).to_have_count(1)
