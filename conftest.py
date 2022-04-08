@@ -4,7 +4,7 @@ from playwright.sync_api import Playwright, expect
 
 @pytest.fixture
 def set_up(playwright: Playwright) -> None:
-    browser = playwright.webkit.launch(headless=True)
+    browser = playwright.chromium.launch(headless=True)
     context = browser.new_context()
     # Open new page
     page = context.new_page()
@@ -13,3 +13,4 @@ def set_up(playwright: Playwright) -> None:
 
     yield page
     page.close()
+

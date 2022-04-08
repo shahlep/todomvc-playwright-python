@@ -7,8 +7,8 @@ def test_url_page_is_working(set_up):
     # Add 5 tods and check the counts
     items = ['one', 'two', 'three', 'four', 'five']
     for item in items:
-        page.locator('.new-todo').click()
-        page.locator('.new-todo').fill(item)
+        page.click('.new-todo')
+        page.fill('.new-todo', item)
         page.locator('.new-todo').press('Enter')
 
     expect(page.locator('.todo-list li')).to_have_count(5)
@@ -32,8 +32,8 @@ should clear text input field when an item is added
 
 def test_clear_input_field_after_add(set_up):
     page = set_up
-    page.locator('.new-todo').click()
-    page.locator('.new-todo').fill('item')
+    page.click('.new-todo')
+    page.fill('.new-todo', 'item')
     page.locator('.new-todo').press('Enter')
 
     expect(page.locator('.new-todo')).to_be_empty()
@@ -47,10 +47,10 @@ def test_clear_input_field_after_add(set_up):
 def test_to_check_todo_can_be_completed(set_up):
     page = set_up
 
-    page.locator('.new-todo').click()
-    page.locator('.new-todo').fill('item')
+    page.click('.new-todo')
+    page.fill('.new-todo', 'item')
     page.locator('.new-todo').press('Enter')
-    page.locator('.toggle').click()
+    page.click('.toggle')
     expect(page.locator('.todo-list li')).to_have_class('completed')
 
 
@@ -63,11 +63,33 @@ removes all completed todos from the app
 def test_clear_all_completed_todos(set_up):
     page = set_up
 
-    page.locator('.new-todo').click()
-    page.locator('.new-todo').fill('item')
+    page.click('.new-todo')
+    page.fill('.new-todo', 'item')
     page.locator('.new-todo').press('Enter')
-    page.locator('.toggle').click()
+    page.click('.toggle')
 
-    page.locator('.clear-completed').click()
+    page.click('.clear-completed')
 
     expect(page.locator('.todo-list li')).to_have_count(0)
+
+
+"""
+Write a test that ensures that you can edit a todo
+"""
+
+
+def test_can_edit_a_todo(set_up):
+    page = set_up
+
+    page.click('.new-todo')
+    page.fill('.new-todo', 'item')
+    page.locator('.new-todo').press('Enter')
+
+    page.dblclick('.todo-list label')
+
+    page.fill('.edit', 'edited item')
+    page.locator('.edit').press('Enter')
+
+    expect(page.locator('.todo-list li')).to_have_text('edited item')
+
+
