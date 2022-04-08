@@ -52,3 +52,22 @@ def test_to_check_todo_can_be_completed(set_up):
     page.locator('.new-todo').press('Enter')
     page.locator('.toggle').click()
     expect(page.locator('.todo-list li')).to_have_class('completed')
+
+
+"""
+Write a test that ensures that the "Clear completed" 
+removes all completed todos from the app
+"""
+
+
+def test_clear_all_completed_todos(set_up):
+    page = set_up
+
+    page.locator('.new-todo').click()
+    page.locator('.new-todo').fill('item')
+    page.locator('.new-todo').press('Enter')
+    page.locator('.toggle').click()
+
+    page.locator('.clear-completed').click()
+
+    expect(page.locator('.todo-list li')).to_have_count(0)
