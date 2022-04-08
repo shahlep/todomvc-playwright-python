@@ -149,3 +149,5 @@ def test_display_only_completed_todos(set_up):
 
     page.click('.selected')
     expect(page.locator('.todo-list li')).to_have_count(1)
+
+
