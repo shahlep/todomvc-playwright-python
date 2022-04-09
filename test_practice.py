@@ -22,7 +22,7 @@ is focused automatically when the app is first loaded.
 
 def test_focus_on_todo_input_field(set_up):
     page = set_up
-    assert page.locator('.new-todo').is_editable()
+    expect(page.locator('.new-todo')).to_be_editable()
 
 
 """
