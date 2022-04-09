@@ -2,7 +2,7 @@ import pytest
 from playwright.sync_api import Playwright, expect
 
 
-@pytest.fixture
+@pytest.fixture(scope='function')
 def set_up(playwright: Playwright) -> None:
     browser = playwright.chromium.launch(headless=True)
     context = browser.new_context()
