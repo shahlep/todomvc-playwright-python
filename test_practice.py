@@ -1,5 +1,4 @@
-from playwright.sync_api import Playwright, sync_playwright, expect
-import pytest
+from playwright.sync_api import expect
 
 
 def test_url_page_is_working(set_up):
@@ -150,5 +149,3 @@ def test_display_only_completed_todos(set_up):
     page.click('.selected')
     expect(page.locator('.todo-list li')).to_have_count(1)
     expect(page.locator('.todo-count')).to_have_text('0 items left')
-
-
