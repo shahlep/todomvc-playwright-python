@@ -9,8 +9,8 @@ def test_url_page_is_working(set_up):
         page.click('.new-todo')
         page.fill('.new-todo', item)
         page.locator('.new-todo').press('Enter')
-
-    expect(page.locator('.todo-list li')).to_have_count(5)
+    number = page.locator('.todo-list li').count()
+    expect(page.locator('.todo-list li')).to_have_count(number)
 
 
 """
@@ -68,8 +68,8 @@ def test_clear_all_completed_todos(set_up):
     page.click('.toggle')
 
     page.click('.clear-completed')
-
-    expect(page.locator('.todo-list li')).to_have_count(0)
+    number = page.locator('.todo-list li').count()
+    expect(page.locator('.todo-list li')).to_have_count(number)
 
 
 """
@@ -124,12 +124,12 @@ def test_page_reload_and_persist(set_up):
         page.click('.new-todo')
         page.fill('.new-todo', item)
         page.locator('.new-todo').press('Enter')
-
-    expect(page.locator('.todo-list li')).to_have_count(5)
+    number = page.locator('.todo-list li').count()
+    expect(page.locator('.todo-list li')).to_have_count(number)
 
     page.reload()
 
-    expect(page.locator('.todo-list li')).to_have_count(5)
+    expect(page.locator('.todo-list li')).to_have_count(number)
 
 
 """
@@ -147,5 +147,6 @@ def test_display_only_completed_todos(set_up):
     page.click('.toggle')
 
     page.click('.selected')
-    expect(page.locator('.todo-list li')).to_have_count(1)
-    expect(page.locator('.todo-count')).to_have_text('0 items left')
+    number = page.locator('.todo-list li').count()
+    expect(page.locator('.todo-list li')).to_have_count(number)
+
