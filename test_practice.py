@@ -101,13 +101,13 @@ def test_can_edit_a_todo(set_up):
 def test_count_number_of_todo_left_to_complete(set_up):
     page = set_up
 
-    items = ['one', 'two', 'three', 'four', 'five']
+    items = ['one', 'two', 'three', 'four', 'five', 'six']
     for item in items:
         page.click('.new-todo')
         page.fill('.new-todo', item)
         page.locator('.new-todo').press('Enter')
 
-    expect(page.locator('.todo-count')).to_have_text('5 items left')
+    expect(page.locator('.todo-count')).to_have_text('6 items left')
 
 
 """
@@ -149,4 +149,3 @@ def test_display_only_completed_todos(set_up):
     page.click('.selected')
     number = page.locator('.todo-list li').count()
     expect(page.locator('.todo-list li')).to_have_count(number)
-
