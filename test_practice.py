@@ -1,6 +1,8 @@
 from playwright.sync_api import expect
+from pytest import mark
 
 
+@mark.home
 def test_url_page_is_working(set_up):
     page = set_up
     # Add 5 tods and check the counts
@@ -19,6 +21,7 @@ is focused automatically when the app is first loaded.
 """
 
 
+@mark.home
 def test_focus_on_todo_input_field(set_up):
     page = set_up
     expect(page.locator('.new-todo')).to_be_focused()
@@ -29,6 +32,7 @@ should clear text input field when an item is added
 """
 
 
+@mark.home
 def test_clear_input_field_after_add(set_up):
     page = set_up
     page.click('.new-todo')
@@ -43,6 +47,7 @@ def test_clear_input_field_after_add(set_up):
 """
 
 
+@mark.home
 def test_to_check_todo_can_be_completed(set_up):
     page = set_up
 
@@ -59,6 +64,7 @@ removes all completed todos from the app
 """
 
 
+@mark.home
 def test_clear_all_completed_todos(set_up):
     page = set_up
 
@@ -77,6 +83,7 @@ Write a test that ensures that you can edit a todo
 """
 
 
+@mark.home
 def test_can_edit_a_todo(set_up):
     page = set_up
 
@@ -98,6 +105,7 @@ def test_can_edit_a_todo(set_up):
 """
 
 
+@mark.home
 def test_count_number_of_todo_left_to_complete(set_up):
     page = set_up
 
@@ -116,6 +124,7 @@ after the browser refreshes the page
 """
 
 
+@mark.home
 def test_page_reload_and_persist(set_up):
     page = set_up
 
@@ -138,6 +147,7 @@ displayed when the "Completed" button is clicked at the bottom
 """
 
 
+@mark.home
 def test_display_only_completed_todos(set_up):
     page = set_up
 
