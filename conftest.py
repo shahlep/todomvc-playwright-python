@@ -11,7 +11,7 @@ def set_up(playwright: Playwright) -> None:
         page = context.new_page()
         page.goto("https://demo.playwright.dev/todomvc/#/")
     """
-    devices = [playwright.devices['Desktop Chrome HiDPI'], playwright.devices['Desktop Safari']]
+    devices = [playwright.devices['Desktop Chrome HiDPI'], playwright.devices['Desktop Safari'], playwright.devices['Desktop Firefox HiDPI']]
     for device in devices:
         context = browser.new_context(**device)
         page = context.new_page()
