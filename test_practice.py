@@ -21,6 +21,7 @@ Write a test that asserts that the input field
 is focused automatically when the app is first loaded.
 """
 
+
 @mark.home
 @mark.even
 def test_focus_on_todo_input_field(set_up):
